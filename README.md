@@ -1,0 +1,3 @@
+# Swift Asynchronous Completion Handler Race Condition
+
+This repository demonstrates a common code error in Swift involving asynchronous operations and completion handlers. The `fetchData` function uses `DispatchQueue.global()` to simulate a network request, and the completion handler is called asynchronously. If the function is deallocated before the completion handler executes, accessing `self` inside the handler will cause a crash due to accessing deallocated memory. The solution addresses this issue by using `weak self` in the completion handler to prevent this from happening. 
